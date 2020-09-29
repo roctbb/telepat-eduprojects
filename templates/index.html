@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Идеи для студенческих и школьных проектов по телемедицине</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto+Mono">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto">
+    <style>
+        .logo {
+            height: 50px;
+        }
+
+        .nav {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        .card {
+            margin-top: 15px;
+        }
+        .card-title {
+            color: #006cb4;
+            font-family: "Roboto Mono";
+        }
+        p, strong {
+            margin-top: 15px;
+            font-family: "Roboto";
+        }
+
+        h3 {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            color: dimgray;
+            font-family: "Roboto";
+        }
+
+        a {
+            color: #006cb4;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row nav">
+        <div class="col">
+            <a href="https://telepat.online"><img class="logo" src="https://telepat.online/img/logo.png"/></a>
+        </div>
+    </div>
+
+    <h3>Идеи для студенческих и школьных проектов по телемедицине</h3>
+
+    <p class="text-muted">Участвуете? Контакт для связи - <a href="http://t.me/roctbb">@roctbb</a> </p>
+
+    {% for project in projects %}
+    <div class="card" style="min-width: 100%;">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            {{ project.get_description() | safe }}
+
+            <p><strong>Сложность:</strong> {% for i in range(project.difficulty) %}<img src="/static/icons8-weightlifting-48.png" style="height: 25px;"/>{%endfor%}</p>
+
+            {% for tag in project.get_tags() %}
+                <span class="badge badge-pill badge-primary">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+
+</body>
+</html>
