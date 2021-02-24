@@ -112,5 +112,5 @@ def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='image/vnd.microsoft.icon')
 
-
-app.run(host=HOST, port=PORT)
+if __name__ == "__main__":
+    app.run(host=HOST, port=PORT)
